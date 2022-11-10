@@ -1,4 +1,4 @@
 exchange_rate:
-  cron: '*/5 * * * *'
-  class: ExchangeRateJob
-  description: 'currency update'
+  cron: '*/1 * * * *'
+  class: RateJob
+  description: 'Update every 1 minutes'

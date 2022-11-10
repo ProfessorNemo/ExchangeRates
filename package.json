@@ -5,15 +5,14 @@
         "@hotwired/turbo-rails": "^7.2.4",
         "@popperjs/core": "^2.11.6",
         "@rails/actioncable": "^7.0.4",
-        "@rails/actiontext": "^7.0.4",
         "air-datepicker": "^3.3.1",
         "bootstrap": "^5.2.2",
+        "bootstrap-icons": "^1.9.1",
         "esbuild": "^0.15.13",
-        "sass": "^1.56.0",
-        "trix": "^2.0.0"
+        "sass": "^1.56.0"
     },
     "scripts": {
         "build": "esbuild app/javascript/*.* --bundle --minify --outdir=app/assets/builds --public-path=assets",
-        "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+        "build:css": "sass --style compressed ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
     }
 }

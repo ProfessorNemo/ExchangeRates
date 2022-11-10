@@ -43,3 +43,9 @@ Rails/HttpPositionalArguments:
 
 Layout/IndentationConsistency:
   Enabled: false
+
+convention:Style/HashSyntax:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false

@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>ExchangeRates</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <%= stylesheet_link_tag "air-datepicker", "application" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
   </head>
 
-  <body>
-    <%= yield %>
+ <body>
+
+    <div class="header">
+      <div class="container">
+        <div class="navbar navbar-expand-sm navbar-light bg-light rounded-bottom shadow-sm bg-gradient">
+          <div class="container-fluid">
+            <%= link_to 'Главная', root_path, class: 'btn btn-outline-primary rounded-pill fw-light' %>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <li><%= link_to "Курс доллара", admin_path, class: 'btn btn-outline-primary rounded-pill fw-light' %></li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <%= flash_messages %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
+

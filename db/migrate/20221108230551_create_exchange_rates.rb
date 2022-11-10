@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateExchangeRates < ActiveRecord::Migration[7.0]
   def up
     create_table :exchange_rates do |t|
