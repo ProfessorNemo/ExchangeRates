@@ -8,7 +8,7 @@
 
 Applications for viewing the dollar to ruble exchange rate. With the ability to create your own exchange rate.
 
-## App requirements:
+### App requirements:
 
 Реализуйте web-приложение (Rails проект), которое удовлетворяет нижеизложенным требованиям.
 * Приложение содержит две страницы: / и /admin
