@@ -36,8 +36,8 @@ module ExchangeRates
       raise response.error! unless response.is_a?(Net::HTTPSuccess)
 
       response.body
-    rescue SocketError => e
-      flash.now[:warning] = "Сервер временно недоступен: #{e.message}"
+    rescue StandardError
+      false
     end
 
     def extract_rate_value(response_body)

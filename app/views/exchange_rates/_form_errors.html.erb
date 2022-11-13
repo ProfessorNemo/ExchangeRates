@@ -1,0 +1,13 @@
+<% errors = model.errors %>
+<% if errors.any? %>
+  <div class="alert alert-danger">
+    <%= t('declinations.form') %>
+    <%= t('declinations.errors', count: errors.count) %>
+
+    <ul class="mb-0">
+      <% errors&.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

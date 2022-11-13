@@ -1,16 +1,24 @@
 import consumer from './consumer'
 
-consumer.subscriptions.create("RateChannel", {
+const RateChannel = consumer.subscriptions.create("RateChannel", {
     connected() {
-        console.log('connected');
+        console.log('Connected to RateChannel')
     },
 
     disconnected() {
-        // Called when the subscription has been terminated by the server
+        console.log('Disonnected from RateChannel')
     },
 
     received(data) {
         console.log(data)
         data['rate_value']
+    },
+
+    speak: function() {
+        return this.perform('speak', {
+            rate_value: data['rate_value']
+        })
     }
-});
+})
+
+export default RateChannel;

@@ -20,6 +20,3 @@ namespace :resque do
     Resque::Scheduler.dynamic = true
   end
 end
-
-
-

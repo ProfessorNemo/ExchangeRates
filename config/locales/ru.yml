@@ -1,15 +1,9 @@
 ru:
-  activerecord:
+  declinations:
     errors:
-      models:
-        exchange_rate:
-          attributes:
-            rate_at:
-              after: 'не может быть меньше или равна текущей даты'
-    models:
-      exchange_rate: 'Курс доллара'
-    attributes:
-      exchange_rate:
-        currency: 'Валюта'
-        rate_at: 'Дата, время'
-        rate_value: 'Курс'
+      one: "%{count} ошибка:"
+      few: "%{count} ошибки:"
+      many: "%{count} ошибок:"
+    form: В вашей форме -
+
+  en: Английский

@@ -1,27 +1,25 @@
-<%= form_with(model: exchange_rate, local: true, class: 'my-4')  do |form| %>
-  <% if exchange_rate.errors.any? %>
-    <div class="alert fade in alert-danger">
-      <h2><%= exchange_rate.errors.count %> <%= Russian.p(exchange_rate.errors.count, "ошибка", "ошибки", "ошибок") %></h2>
-      <ul>
-        <% exchange_rate.errors.full_messages.each do |message| %>
-           <li><%= message %></li>
-        <% end %>
-      </ul>
+<%= form_with model: exchange_rate, class: 'my-4' do |f| %>
+
+<%= render partial: 'form_errors', locals: { model: exchange_rate } %>
+
+  <div class="form-group mb-4">
+    <%= f.datetime_select :rate_at,
+        ampm: true,
+        value: exchange_rate.rate_at_localtime,
+				locale: :ru,
+				class: 'form-control mb-2' %>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="form-group mb-2">
+      <%= f.label :rate_value, 'Курс доллара:', class: 'form-label' %>
+      <%= f.text_field :rate_value,
+        value: exchange_rate.human_rate_value,
+				class: 'form-control mb-8' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :rate_at %>
-    <%= form.text_field :rate_at, id: :exchange_rate_rate_at, value: exchange_rate.rate_at_localtime %>
   </div>
 
-  <div class="field">
-    <%= form.label :rate_value %>
-    <%= form.text_field :rate_value, id: :exchange_rate_rate_value %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.submit 'Обновить', class: 'btn btn-success mt-2' %>
 <% end %>
+
 

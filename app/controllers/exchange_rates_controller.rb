@@ -5,7 +5,7 @@ class ExchangeRatesController < ApplicationController
 
   def update
     if exchange_rate.update exchange_rate_params.merge(rate_at: rate_at)
-      redirect_to admin_path, notice: 'Курс доллара успешно обновлён'
+      redirect_to admin_path, notice: 'Курс доллара успешно обновлён!'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -23,4 +23,3 @@ class ExchangeRatesController < ApplicationController
     exchange_rate_params[:rate_at].to_time.utc
   end
 end
-

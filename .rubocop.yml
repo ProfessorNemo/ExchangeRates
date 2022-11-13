@@ -6,7 +6,7 @@ require:
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.1.2
+  TargetRubyVersion: 3.0.3
 
 Style/Documentation:
   Enabled: false
@@ -48,4 +48,16 @@ convention:Style/HashSyntax:
   Enabled: false
 
 Rails/SkipsModelValidations:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/ScatteredSetup:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
   Enabled: false

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ExchangeRates
   class Dispatch
     def initialize(exchange_rate)
@@ -6,16 +8,11 @@ module ExchangeRates
 
     # Шлем в канал "rate_channel" объект "rate_value",
     # который затем получаем в коллбэке 'received' и достаем из
-    # ключа "rate" наше значение
+    # ключа "rate_value" наше значение
     def broadcast_rate
-      ActionCable.server.broadcast('rate_channel', { rate_value: render_message })
-    end
+      data = { rate_value: @exchange_rate.human_rate_value }
 
-    def render_message
-      ApplicationController.renderer.render(
-        partial: 'root/rate',
-        locals: { rate: @exchange_rate }
-      )
+      ActionCable.server.broadcast('rate_channel', data)
     end
   end
 end

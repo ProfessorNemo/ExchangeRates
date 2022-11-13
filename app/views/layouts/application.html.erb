@@ -1,32 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="30">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <%= stylesheet_link_tag "air-datepicker", "application" %>
+    <%= stylesheet_link_tag  "application"  %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-
   </head>
 
  <body>
 
-    <div class="header">
-      <div class="container">
-        <div class="navbar navbar-expand-sm navbar-light bg-light rounded-bottom shadow-sm bg-gradient">
-          <div class="container-fluid">
+ <div class="header">
+  <div class="container">
+    <div class="navbar navbar-expand-sm navbar-light bg-light rounded-bottom shadow-sm bg-gradient">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav mb-4 mb-lg-0 ms-left">
             <%= link_to 'Главная', root_path, class: 'btn btn-outline-primary rounded-pill fw-light' %>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                  <li><%= link_to "Курс доллара", admin_path, class: 'btn btn-outline-primary rounded-pill fw-light' %></li>
+              <li><%= link_to "Курс доллара", admin_path, class: 'btn btn-outline-primary rounded-pill fw-light' %></li>
+</ul>
             </div>
-          </div>
         </div>
       </div>
     </div>
+  </div>
 
     <div class="container">
       <div class="row">
@@ -39,4 +41,3 @@
 
   </body>
 </html>
-
