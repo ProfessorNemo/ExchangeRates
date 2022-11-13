@@ -1,6 +1,8 @@
 # Funbox test task
 
 ###### Ruby: `3.0.3` Rails: `7.0.4` Yarn: `3.2.4` Nodejs: `12.22.9` Node: `17.1.0`
+![Снимок экрана от 2022-11-12 03-54-18](https://user-images.githubusercontent.com/102049907/201546561-d497b4d5-c09d-40ba-8c45-0748d295ac2c.png)
+![Снимок экрана от 2022-11-12 03-54-46](https://user-images.githubusercontent.com/102049907/201546562-cafa0b77-4deb-458b-971d-c83968364ed1.png)
 
 ### About:
 
@@ -39,7 +41,7 @@ http://www.rbc.ru, и т.д.).
 оформлено в виде Procfile-а для Foreman.
 
 
-### Installing
+### Installing:
 
 Clone repo ```git clone git@github.com:ProfessorNemo/ExchangeRates.git```
 
@@ -47,13 +49,14 @@ Install gems ```bundle```
 
 The App can be installed with ```make initially``` command.
 
-### Running
+### Running:
 
 The App can be run with  ```bin/dev``` command.
 
-## Running the tests
+### Running the tests:
 
 Tests can be run with ```make rspec``` command.
 
+### Start:
 
 Open `localhost:3000` in browser
