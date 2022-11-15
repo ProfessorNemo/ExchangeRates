@@ -1,8 +1,9 @@
 # Funbox test task
 
 ###### Ruby: `3.0.3` Rails: `7.0.4` Yarn: `3.2.4` Nodejs: `12.22.9` Node: `17.1.0`
-![Снимок экрана от 2022-11-12 03-54-18](https://user-images.githubusercontent.com/102049907/201546561-d497b4d5-c09d-40ba-8c45-0748d295ac2c.png)
-![Снимок экрана от 2022-11-12 03-54-46](https://user-images.githubusercontent.com/102049907/201546562-cafa0b77-4deb-458b-971d-c83968364ed1.png)
+![Снимок экрана от 2022-11-16 00-52-17](https://user-images.githubusercontent.com/102049907/202033542-8e36d0c8-1435-45e2-b042-f07dfb58b66a.png)
+![Снимок экрана от 2022-11-16 00-55-50](https://user-images.githubusercontent.com/102049907/202033549-3702f3bd-4cbd-40b7-aa74-e8c249ddc746.png)
+
 
 ### About:
 
