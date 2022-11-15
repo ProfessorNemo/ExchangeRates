@@ -22,7 +22,7 @@ class ExchangeRate < ApplicationRecord
   private
 
   def dispatch_to_web
-    ExchangeRates::Dispatch.new(self).broadcast_rate
+    ExchangeRates::Dispatch.new(self).perform
   end
 
   def task_job

@@ -5,8 +5,8 @@ RSpec.describe ExchangeRateDecorator, type: :decorator do
   let(:exchange_rate) { build(:exchange_rate, rate_at: rate_at) }
   let(:decorator) { exchange_rate.decorate }
 
-  describe '#human_rate_value' do
-    it { expect(decorator.human_rate_value.tr(',', '.')).to eq("#{exchange_rate.rate_value} руб.") }
+  describe '#human_money' do
+    it { expect(decorator.human_money.tr(',', '.')).to eq("#{exchange_rate.rate_value} руб.") }
   end
 
   describe '#rate_at_localtime' do

@@ -34,8 +34,11 @@ group :development do
 end
 
 gem 'draper'
+gem 'faraday'
+gem 'faraday_middleware'
 gem 'rails-i18n', '~> 7.0.3'
 gem 'resque'
 gem 'resque-scheduler'
 gem 'russian'
 gem 'validates_timeliness', '~> 6.0.0.beta2', github: 'mitsuru/validates_timeliness', branch: 'rails7'
+gem 'xml-to-json'

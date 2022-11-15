@@ -5,9 +5,9 @@ class ExchangeRateDecorator < Draper::Decorator
 
   include ActionView::Helpers::NumberHelper
 
-  # метод преобразование числа в валюту (100 => "$100.00")
-  def human_rate_value
-    @human_rate_value ||= number_to_currency(rate_value)
+  # метод преобразование числа в валюту (100 => "100.00 руб.")
+  def human_money
+    @human_money ||= number_to_currency(rate_value)
   end
 
   def rate_at_localtime

@@ -28,7 +28,7 @@ RSpec.describe ExchangeRate do
 
     before do
       allow(ExchangeRates::Dispatch).to receive(:new).with(exchange_rate).and_return(exchange_rate_dispatch)
-      allow(exchange_rate_dispatch).to receive(:broadcast_rate)
+      allow(exchange_rate_dispatch).to receive(:perform)
 
       allow(Resque).to receive(:remove_delayed).with(RateJob, force: true)
       allow(Resque).to receive(:enqueue_at).with(exchange_rate.rate_at, RateJob, force: true)
@@ -36,7 +36,7 @@ RSpec.describe ExchangeRate do
       exchange_rate.update!(rate_value: 70)
     end
 
-    it { expect(exchange_rate_dispatch).to have_received(:broadcast_rate) }
+    it { expect(exchange_rate_dispatch).to have_received(:perform) }
     it { expect(Resque).to have_received(:remove_delayed) }
     it { expect(Resque).to have_received(:enqueue_at) }
   end

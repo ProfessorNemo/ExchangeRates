@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe ExchangeRates::Parser, type: :service do
-  let(:rate_at) { 1.day.from_now }
   let(:url) { 'http://www.cbr.ru/scripts/XML_daily.asp' }
-  let!(:exchange_rate) { create(:exchange_rate, rate_at: rate_at) }
+  let!(:exchange_rate) { create(:exchange_rate) }
   let(:force) { true }
   let(:service) { described_class.new(exchange_rate, force) }
 
@@ -77,14 +76,14 @@ RSpec.describe ExchangeRates::Parser, type: :service do
             .and_return(dispatch_mock)
         end
 
-        before { allow(dispatch_mock).to receive(:broadcast_rate) }
+        before { allow(dispatch_mock).to receive(:perform) }
 
         it { expect { service.call }.to change { exchange_rate.reload.rate_value }.from(62.05).to(60.2179) }
 
         it do
           service.call
 
-          expect(dispatch_mock).to have_received(:broadcast_rate)
+          expect(dispatch_mock).to have_received(:perform)
         end
       end
     end

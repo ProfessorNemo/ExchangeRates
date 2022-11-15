@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-require 'net/http'
+require 'faraday'
+require 'xml/to/json'
+require 'active_support'
 
 module ExchangeRates
   class Parser
@@ -18,43 +20,40 @@ module ExchangeRates
       raise 'Не удалось получить данные с сервера' unless response_body
 
       rate_value = extract_rate_value(response_body)
+
       return if rate_value.zero?
 
       ExchangeRate.where(id: @exchange_rate).update_all(rate_value: rate_value)
-      ExchangeRates::Dispatch.new(@exchange_rate.reload).broadcast_rate
+      ExchangeRates::Dispatch.new(@exchange_rate.reload).perform
     end
 
     private
 
     def extract_content_by_url
-      uri = URI.parse(URL)
+      connection = Faraday.new do |faraday|
+        faraday.request :multipart
+        faraday.request :url_encoded
+        faraday.adapter :net_http
+      end
 
-      http = Net::HTTP.new(uri.host, uri.port)
-      request = Net::HTTP::Get.new(uri.request_uri)
+      response ||= connection.get(URL)
 
-      response = http.request(request)
-      raise response.error! unless response.is_a?(Net::HTTPSuccess)
+      xml = Nokogiri::XML response.body
 
-      response.body
+      JSON.parse(JSON.pretty_generate(xml.root))['children']
     rescue StandardError
       false
     end
 
-    def extract_rate_value(response_body)
-      result = 0
-      xml_doc = Nokogiri::XML(response_body)
-      root_element = xml_doc.xpath('ValCurs').first
-      return result if root_element.blank?
+    def extract_rate_value(response)
+      children(response, response.map.with_index do |_val, index|
+                           children(response, index, 1) == 'USD' ? index : nil
+                         end.compact.first, 4)
+        .tr(',', '.').to_f
+    end
 
-      xml_doc.xpath('//Valute').each do |element|
-        currency = element.xpath('CharCode').text
-        next unless currency.downcase == @exchange_rate.currency
-
-        result = element.xpath('Value').text.tr(',', '.').to_f
-        break
-      end
-
-      result
+    def children(response, index_name, index_rate)
+      response[index_name]['children'][index_rate]['children'].first['content']
     end
   end
 end
