@@ -29,7 +29,6 @@ RSpec.describe ExchangeRates::Parser, type: :service do
   end
 
   shared_examples 'force or not force' do
-    WebMock.allow_net_connect!
     context 'when api url does not exist' do
       let(:url) { 'http://does not exist' }
 
@@ -37,11 +36,12 @@ RSpec.describe ExchangeRates::Parser, type: :service do
         stub_request(:get, url)
           .with(
             headers: {
-              'Accept' => 'text/html,application/xhtml+xml',
-              'Accept-Encoding' => 'gzip, deflate',
-              'User-Agent' => 'Ruby on Rails'
+              'Accept' => '*/*',
+              'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+              'User-Agent' => 'Faraday v1.10.2'
             }
-          ).to_return(status: 200, body: body, headers: {})
+          )
+          .to_return(status: 200, body: '', headers: {})
       end
 
       before { stub_const('ExchangeRates::Parser::URL', url) }
@@ -54,17 +54,18 @@ RSpec.describe ExchangeRates::Parser, type: :service do
         stub_request(:get, url)
           .with(
             headers: {
-              'Accept' => 'text/html,application/xhtml+xml',
-              'Accept-Encoding' => 'gzip, deflate',
-              'User-Agent' => 'Ruby on Rails'
+              'Accept' => '*/*',
+              'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+              'User-Agent' => 'Faraday v1.10.2'
             }
-          ).to_return(status: 200, body: body, headers: {})
+          )
+          .to_return(status: 200, body: '', headers: {})
       end
 
       context 'when body is blank' do
         let(:body) { '' }
 
-        it { expect(service.call).to be_nil }
+        it { expect { service.call }.to raise_error(RuntimeError, 'Не удалось получить данные с сервера') }
       end
 
       context 'when body is present' do
@@ -90,11 +91,9 @@ RSpec.describe ExchangeRates::Parser, type: :service do
   end
 
   describe '#call' do
-    context 'when force' do
-      it_behaves_like 'force or not force'
-    end
-
     context 'when not force' do
+      let(:force) { false }
+
       context 'when exchange rate at is more than current time' do
         it { expect(service.call).to be_nil }
       end
@@ -102,21 +101,33 @@ RSpec.describe ExchangeRates::Parser, type: :service do
       context 'when exchange rate at is less than current time' do
         let(:rate_at) { 5.days.ago }
         let(:exchange_rate) { build(:exchange_rate, rate_at: rate_at) }
+        let(:dispatch_mock) { instance_double(ExchangeRates::Dispatch) }
+
+        before do
+          allow(ExchangeRates::Dispatch).to receive(:new)
+            .with(exchange_rate)
+            .and_return(dispatch_mock)
+        end
+
+        before { allow(dispatch_mock).to receive(:perform) }
 
         before do
           stub_request(:get, url)
             .with(
               headers: {
-                'Accept' => 'text/html,application/xhtml+xml',
-                'Accept-Encoding' => 'gzip, deflate',
-                'User-Agent' => 'Ruby on Rails'
+                'Accept' => '*/*',
+                'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                'User-Agent' => 'Faraday v1.10.2'
               }
-            ).to_return(status: 200, body: body, headers: {})
+            )
+            .to_return(status: 200, body: '', headers: {})
         end
 
         before { exchange_rate.save(validate: false) }
 
-        it_behaves_like 'force or not force'
+        it { expect { service.call }.to raise_error(RuntimeError, 'Не удалось получить данные с сервера') }
+
+        it { expect(dispatch_mock).not_to have_received(:perform) }
       end
     end
   end
