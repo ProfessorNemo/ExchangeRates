@@ -7,6 +7,6 @@ class RateJob
     options = options.with_indifferent_access
     force = options.fetch(:force, false)
 
-    ExchangeRates::Parser.new(ExchangeRate.first, force).call
+    ExchangeRates::Parser.call(ExchangeRate.first, force)
   end
 end

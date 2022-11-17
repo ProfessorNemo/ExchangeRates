@@ -5,12 +5,14 @@ require 'xml/to/json'
 require 'active_support'
 
 module ExchangeRates
-  class Parser
+  class Parser < ::ApplicationService
     URL = 'http://www.cbr.ru/scripts/XML_daily.asp'
 
     def initialize(exchange_rate, force)
       @exchange_rate = exchange_rate
       @force = force
+
+      super
     end
 
     def call
@@ -24,7 +26,7 @@ module ExchangeRates
       return if rate_value.zero?
 
       ExchangeRate.where(id: @exchange_rate).update_all(rate_value: rate_value)
-      ExchangeRates::Dispatch.new(@exchange_rate.reload).perform
+      ExchangeRates::Dispatch.call(@exchange_rate.reload)
     end
 
     private

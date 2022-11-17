@@ -12,7 +12,7 @@ RSpec.describe ExchangeRates::Dispatch, type: :service do
       allow(broadcast_mock)
         .to receive(:broadcast).with('rate_channel', { rate_value: exchange_rate.human_money })
 
-      service.perform
+      service.call
     end
 
     it { expect(broadcast_mock).to have_received(:broadcast) }

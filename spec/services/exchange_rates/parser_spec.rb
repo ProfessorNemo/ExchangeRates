@@ -77,14 +77,14 @@ RSpec.describe ExchangeRates::Parser, type: :service do
             .and_return(dispatch_mock)
         end
 
-        before { allow(dispatch_mock).to receive(:perform) }
+        before { allow(dispatch_mock).to receive(:call) }
 
         it { expect { service.call }.to change { exchange_rate.reload.rate_value }.from(62.05).to(60.2179) }
 
         it do
           service.call
 
-          expect(dispatch_mock).to have_received(:perform)
+          expect(dispatch_mock).to have_received(:call)
         end
       end
     end
@@ -109,7 +109,7 @@ RSpec.describe ExchangeRates::Parser, type: :service do
             .and_return(dispatch_mock)
         end
 
-        before { allow(dispatch_mock).to receive(:perform) }
+        before { allow(dispatch_mock).to receive(:call) }
 
         before do
           stub_request(:get, url)
@@ -127,7 +127,7 @@ RSpec.describe ExchangeRates::Parser, type: :service do
 
         it { expect { service.call }.to raise_error(RuntimeError, 'Не удалось получить данные с сервера') }
 
-        it { expect(dispatch_mock).not_to have_received(:perform) }
+        it { expect(dispatch_mock).not_to have_received(:call) }
       end
     end
   end

@@ -1,6 +1,6 @@
 import consumer from './consumer'
 
-const counterChannel = consumer.subscriptions.create("RateChannel", {
+const RateChannel = consumer.subscriptions.create("RateChannel", {
     connected() {
         console.log('Connected to RateChannel')
     },
@@ -10,4 +10,4 @@ const counterChannel = consumer.subscriptions.create("RateChannel", {
     },
 })
 
-export default counterChannel;
+export default RateChannel;

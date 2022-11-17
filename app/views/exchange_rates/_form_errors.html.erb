@@ -6,7 +6,13 @@
 
     <ul class="mb-0">
       <% errors&.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <% if message.include?("Rate at") %>
+          <li><%= "rate_at: некорректная дата" %></li>
+        <% elsif message.include?("Rate value")%>
+          <li><%= "rate_value: не является числом" %></li>
+          <% else %>
+          <li><%= message %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>

@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 module ExchangeRates
-  class Dispatch
+  class Dispatch < ::ApplicationService
     def initialize(exchange_rate)
       @exchange_rate = exchange_rate.decorate
+
+      super
     end
 
     # Шлем в канал "rate_channel" объект "@exchange_rate"
-    def perform
+    def call
       data = { rate_value: @exchange_rate.human_money }
 
       Rails.logger.info("Dollar rate: #{data}")
