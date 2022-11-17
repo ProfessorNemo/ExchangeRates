@@ -7,6 +7,10 @@ initially:
 	rails db:create
 	rails db:migrate
 	rails db:seed
+	yarn install
+	yarn build:css
+	yarn build
+	rails assets:precompile
 
 rubocop:
 	rubocop -A
@@ -19,7 +23,6 @@ rspec:
 	bundle exec rspec spec/jobs/rate_job_spec.rb
 	bundle exec rspec spec/services/exchange_rates/parser_spec.rb
 	bundle exec rspec spec/services/exchange_rates/dispatch_spec.rb
-
 
 run-console:
 	bundle exec rails console
