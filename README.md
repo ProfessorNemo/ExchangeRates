@@ -1,4 +1,4 @@
-# Funbox test task
+# ExchangeRates
 
 ###### Ruby: `3.0.3` Rails: `7.0.4` Yarn: `3.2.4` Nodejs: `12.22.9` Node: `17.1.0`
 ![Снимок экрана от 2022-11-16 00-52-17](https://user-images.githubusercontent.com/102049907/202033542-8e36d0c8-1435-45e2-b042-f07dfb58b66a.png)
