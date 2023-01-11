@@ -6,7 +6,7 @@ require 'active_support'
 
 module ExchangeRates
   class Parser < ::ApplicationService
-    URL = 'http://www.cbr.ru/scripts/XML_daily.asp'
+    URL = 'https://www.cbr.ru/scripts/XML_daily.asp'
 
     def initialize(exchange_rate, force)
       @exchange_rate = exchange_rate

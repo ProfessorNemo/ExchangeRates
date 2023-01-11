@@ -17,7 +17,7 @@ RSpec.describe ExchangeRate do
     context 'when rate at is invalid' do
       it do
         expect(exchange_rate)
-          .not_to allow_value('13', 'a/b/c', '1380', '2000-120-12', '1533-15-19', '13-08-99').for(:rate_at)
+          .not_to allow_value('11', 'a/b/c', '1380', '2000-120-12', '1533-15-19', '13-08-99').for(:rate_at)
       end
     end
   end

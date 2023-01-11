@@ -14,7 +14,8 @@ module ExchangeRates
 
       Rails.logger.info("Dollar rate: #{data}")
 
-      ActionCable.server.broadcast('rate_channel', data)
+      ActionCable.server.broadcast('rate_channel', { content: data[:rate_value] })
     end
   end
 end
+

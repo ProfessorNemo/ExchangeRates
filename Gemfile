@@ -41,3 +41,5 @@ gem 'resque'
 gem 'resque-scheduler'
 gem 'validates_timeliness', '~> 6.0.0.beta2', github: 'mitsuru/validates_timeliness', branch: 'rails7'
 gem 'xml-to-json'
+
+gem "ruby-lsp", "~> 0.3.6", :group => :development

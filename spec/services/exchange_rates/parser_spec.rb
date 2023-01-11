@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe ExchangeRates::Parser, type: :service do
-  let(:url) { 'http://www.cbr.ru/scripts/XML_daily.asp' }
+  let(:url) { 'https://www.cbr.ru/scripts/XML_daily.asp' }
   let!(:exchange_rate) { create(:exchange_rate) }
   let(:force) { true }
   let(:service) { described_class.new(exchange_rate, force) }

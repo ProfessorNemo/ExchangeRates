@@ -1,17 +1,16 @@
-import consumer from './consumer'
+import consumer from "./consumer"
 
-const RateChannel = consumer.subscriptions.create(
-    'RateChannel', {
-        connected(data) {
-            console.log('Connected to RateChannel')
-            console.log(this.element)
-        },
+consumer.subscriptions.create("RateChannel", {
+  connected() {
+    console.log("RateChannel connected");
+  },
 
-        disconnected() {
-            console.log('Disonnected from RateChannel')
-            console.log(this.element)
-        }
+  disconnected() {
+    console.log("RateChannel disconnected");
+  },
 
-    })
-
-export default RateChannel;
+  received(data) {
+    console.log(`RateChannel received data: ${data.content}`);
+    $('#exchange_rate').html(data.content);
+  }
+});
