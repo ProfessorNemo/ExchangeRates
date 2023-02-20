@@ -18,4 +18,3 @@ module ExchangeRates
     end
   end
 end
-

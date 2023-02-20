@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.3'
+ruby '3.2.1'
 
 gem 'cssbundling-rails'
 gem 'image_processing', '~> 1.2'
@@ -12,7 +12,6 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 6.0'
 gem 'rails', '~> 7.0.4'
 gem 'redis', '~> 5.0'
-gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 
@@ -23,9 +22,13 @@ group :development, :test do
   gem 'rspec-rails', '>= 5'
   gem 'shoulda-matchers'
   gem 'webmock', '~> 3'
+  gem 'sidekiq-cron'
+  gem 'sidekiq', '~> 7'
+  gem 'fugit'
 end
 
 group :development do
+  gem 'bullet', '~> 7.0'
   gem 'rubocop', '~> 1.30', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.14', require: false
@@ -37,9 +40,10 @@ gem 'draper'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'rails-i18n', '~> 7.0.3'
-gem 'resque'
-gem 'resque-scheduler'
 gem 'validates_timeliness', '~> 6.0.0.beta2', github: 'mitsuru/validates_timeliness', branch: 'rails7'
 gem 'xml-to-json'
 
-gem "ruby-lsp", "~> 0.3.6", :group => :development
+gem 'ruby-lsp', '~> 0.3.6', :group => :development
+
+gem 'propshaft'
+

@@ -27,9 +27,11 @@ class ExchangeRate < ApplicationRecord
 
   def task_job
     # Удаление отложенных заданий
-    Resque.remove_delayed(RateJob, force: true)
+    ss = Sidekiq::ScheduledSet.new
+    jobs = ss.scan('RateJob').select { |retri| retri.klass == 'RateJob' }
+    jobs.each(&:delete)
     # Постановка в очередь задания (выполнять задачу через определенный
-    # промежуток времени, см. resque_schedule.yml)
-    Resque.enqueue_at(rate_at, RateJob, force: true)
+    # промежуток времени, см. schedule.yml)
+    RateJob.perform_at(rate_at, force: true)
   end
 end
