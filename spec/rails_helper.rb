@@ -34,3 +34,6 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+# Это нужно, чтобы капибара искала стили и js в правильном месте
+Capybara.asset_host = 'http://localhost:3000'

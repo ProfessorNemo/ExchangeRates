@@ -12,6 +12,8 @@ module ExchangeRates
   class Application < Rails::Application
     config.parent_controller = 'TurboController'
     config.navigational_formats = ['*/*', :html, :turbo_stream]
+    config.active_record.yaml_column_permitted_classes = [Symbol, Date]
+    config.active_record.use_yaml_unsafe_load = true
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
@@ -28,6 +30,5 @@ module ExchangeRates
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.active_job.queue_adapter = :sidekiq
-
   end
 end

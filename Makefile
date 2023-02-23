@@ -23,8 +23,10 @@ rspec:
 	bundle exec rspec spec/jobs/rate_job_spec.rb
 	bundle exec rspec spec/services/exchange_rates/parser_spec.rb
 	bundle exec rspec spec/services/exchange_rates/dispatch_spec.rb
+	bundle exec rspec spec/features/user_page_admin_page.rb
 
 run-console:
 	bundle exec rails console
 
 c: run-console
+

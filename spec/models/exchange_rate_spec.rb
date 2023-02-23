@@ -43,4 +43,3 @@ RSpec.describe ExchangeRate do
   end
 end
 # rubocop:enable all
-

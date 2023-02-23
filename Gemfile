@@ -17,14 +17,16 @@ gem 'turbo-rails'
 
 group :development, :test do
   gem 'byebug'
+  gem 'capybara'
   gem 'factory_bot_rails'
+  gem 'fugit'
+  gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '>= 5'
   gem 'shoulda-matchers'
-  gem 'webmock', '~> 3'
-  gem 'sidekiq-cron'
   gem 'sidekiq', '~> 7'
-  gem 'fugit'
+  gem 'sidekiq-cron'
+  gem 'webmock', '~> 3'
 end
 
 group :development do
@@ -43,8 +45,5 @@ gem 'rails-i18n', '~> 7.0.3'
 gem 'validates_timeliness', '~> 6.0.0.beta2', github: 'mitsuru/validates_timeliness', branch: 'rails7'
 gem 'xml-to-json'
 
-gem 'ruby-lsp', '~> 0.3.6', :group => :development
-
 gem 'propshaft'
-gem 'after_commit_everywhere', '~> 1'
-
+gem 'ruby-lsp', '~> 0.3.6', :group => :development
