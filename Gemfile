@@ -46,4 +46,5 @@ gem 'xml-to-json'
 gem 'ruby-lsp', '~> 0.3.6', :group => :development
 
 gem 'propshaft'
+gem 'after_commit_everywhere', '~> 1'
 

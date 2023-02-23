@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe RootController do
+RSpec.describe CurrenciesController do
+  let!(:exchange_rate) { create(:exchange_rate).decorate }
+
   describe '#index' do
     context 'when format is invalid' do
       it { expect { get(:index, format: :json) }.to raise_error(ActionController::UnknownFormat) }

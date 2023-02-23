@@ -77,7 +77,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actioncable@npm:^7.0":
+"@rails/actioncable@npm:^7.0, @rails/actioncable@npm:^7.0.4":
   version: 7.0.4
   resolution: "@rails/actioncable@npm:7.0.4"
   checksum: b31cae40511a3df4d3048779255219b92f7dd89514f3c9f2da2b219b9b0635261b17b05031c7070756d319bf9165d4d6c021a820b110d53a3e6c441a062accdd
@@ -582,10 +582,10 @@ __metadata:
     "@hotwired/stimulus": ^3.2.1
     "@hotwired/turbo-rails": ^7.2.5
     "@popperjs/core": ^2.11.6
+    "@rails/actioncable": ^7.0.4
     bootstrap: ^5.2.3
     bootstrap-icons: ^1.10.3
     esbuild: ^0.15.13
-    jquery: ^3.6.3
     sass: ^1.58.3
   languageName: unknown
   linkType: soft
@@ -848,13 +848,6 @@ __metadata:
   version: 2.0.0
   resolution: "isexe@npm:2.0.0"
   checksum: 26bf6c5480dda5161c820c5b5c751ae1e766c587b1f951ea3fcfc973bafb7831ae5b54a31a69bd670220e42e99ec154475025a468eae58ea262f813fdc8d1c62
-  languageName: node
-  linkType: hard
-
-"jquery@npm:^3.6.3":
-  version: 3.6.3
-  resolution: "jquery@npm:3.6.3"
-  checksum: 0fd366bdcaa0c84a7a8751ce20f8192290141913978b5059574426d9b01f4365daa675f95aab3eec94fd794d27b08d32078a2236bef404b8ba78073009988ce6
   languageName: node
   linkType: hard
 

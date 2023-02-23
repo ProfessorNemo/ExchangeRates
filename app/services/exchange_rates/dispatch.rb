@@ -14,7 +14,15 @@ module ExchangeRates
 
       Rails.logger.info("Dollar rate: #{data}")
 
-      ActionCable.server.broadcast('rate_channel', { content: data[:rate_value] })
+      Turbo::StreamsChannel.broadcast_action_to(
+        'money',
+        action: 'update',
+        target: 'currency',
+        content: ApplicationController.render(
+          template: 'currencies/updated', locals: { exchange_rate: @exchange_rate },
+          layout: false
+        )
+      )
     end
   end
 end

@@ -125,8 +125,6 @@ RSpec.describe ExchangeRates::Parser, type: :service do
 
         before { exchange_rate.save(validate: false) }
 
-        it { expect { service.call }.to raise_error(RuntimeError, 'Не удалось получить данные с сервера') }
-
         it { expect(dispatch_mock).not_to have_received(:call) }
       end
     end

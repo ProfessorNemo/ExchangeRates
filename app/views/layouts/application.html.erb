@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="600">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <%= stylesheet_link_tag  "application" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
@@ -20,7 +20,7 @@
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <ul class="navbar-nav mb-4 mb-lg-0 ms-left">
-            <%= link_to 'Главная', root_path, class: 'btn btn-outline-primary rounded-pill fw-light' %>
+            <%= link_to 'Главная', user_path, class: 'btn btn-outline-primary rounded-pill fw-light' %>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <li><%= link_to "Курс доллара", admin_path, class: 'btn btn-outline-primary rounded-pill fw-light' %></li>
             </div>

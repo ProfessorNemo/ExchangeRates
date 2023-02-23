@@ -17,7 +17,7 @@ rubocop:
 
 rspec:
 	bundle exec rspec spec/controllers/exchange_rates_spec.rb
-	bundle exec rspec spec/controllers/root_spec.rb
+	bundle exec rspec spec/controllers/currencies_spec.rb
 	bundle exec rspec spec/decorators/exchange_rate_decorator_spec.rb
 	bundle exec rspec spec/models/exchange_rate_spec.rb
 	bundle exec rspec spec/jobs/rate_job_spec.rb

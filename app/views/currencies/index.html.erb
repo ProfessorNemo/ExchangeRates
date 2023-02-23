@@ -1,0 +1,7 @@
+
+<%= turbo_stream_from 'money', channel: RateChannel %>
+
+<%= turbo_frame_tag 'currency' do %>
+  <%= render 'currencies/exchange_rate', exchange_rate: @exchange_rate %>
+<% end %>
+

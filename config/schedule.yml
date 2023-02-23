@@ -1,6 +1,6 @@
 :schedule:
-  rate_job:
+  rate_cron_job:
     cron: '*/10 * * * * Europe/Moscow'
-    class: RateJob
-    queue: currency
+    class: RateCronJob
+    queue: cron_currency
     description: Update every 10 minutes

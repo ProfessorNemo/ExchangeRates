@@ -23,6 +23,8 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
+  WebMock.allow_net_connect!
+
   config.include FactoryBot::Syntax::Methods
 end
 

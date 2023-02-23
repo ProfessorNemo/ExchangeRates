@@ -25,20 +25,22 @@ RSpec.describe ExchangeRate do
   describe 'after commit' do
     let!(:exchange_rate) { create(:exchange_rate) }
     let(:exchange_rate_dispatch) { double('ExchangeRates::Dispatch')  }
+    let(:dummy) { double('RateJob.set(wait_until: exchange_rate.rate_at)') }
 
     before do
       allow(ExchangeRates::Dispatch).to receive(:new).with(exchange_rate).and_return(exchange_rate_dispatch)
       allow(exchange_rate_dispatch).to receive(:call)
 
-      allow(Resque).to receive(:remove_delayed).with(RateJob, force: true)
-      allow(Resque).to receive(:enqueue_at).with(exchange_rate.rate_at, RateJob, force: true)
+      allow(RateJob).to receive(:set).with(wait_until: exchange_rate.rate_at).and_return(dummy)
+      allow(dummy).to receive(:perform_later).with(force: true)
 
       exchange_rate.update!(rate_value: 70)
     end
 
+
     it { expect(exchange_rate_dispatch).to have_received(:call) }
-    it { expect(Resque).to have_received(:remove_delayed) }
-    it { expect(Resque).to have_received(:enqueue_at) }
+    it { expect(dummy).to have_received(:perform_later) }
   end
 end
 # rubocop:enable all
+

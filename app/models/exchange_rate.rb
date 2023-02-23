@@ -17,7 +17,7 @@ class ExchangeRate < ApplicationRecord
             numericality: { greater_than_or_equal_to: 0 },
             if: ->(record) { record.rate_value.present? }
 
-  after_update_commit :dispatch_to_web, :task_job
+  after_update_commit :task_job, :dispatch_to_web
 
   private
 
@@ -26,12 +26,8 @@ class ExchangeRate < ApplicationRecord
   end
 
   def task_job
-    # Удаление отложенных заданий
-    ss = Sidekiq::ScheduledSet.new
-    jobs = ss.scan('RateJob').select { |retri| retri.klass == 'RateJob' }
-    jobs.each(&:delete)
     # Постановка в очередь задания (выполнять задачу через определенный
     # промежуток времени, см. schedule.yml)
-    RateJob.perform_at(rate_at, force: true)
+    RateJob.set(wait_until: rate_at).perform_later(force: true)
   end
 end
