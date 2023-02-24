@@ -47,3 +47,5 @@ gem 'xml-to-json'
 
 gem 'propshaft'
 gem 'ruby-lsp', '~> 0.3.6', :group => :development
+
+gem 'html2slim', '~> 0.2.0'

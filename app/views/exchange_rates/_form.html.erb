@@ -1,21 +1,21 @@
 <%= form_with model: exchange_rate, class: 'my-4' do |f| %>
 
-<%= render partial: 'form_errors', locals: { model: exchange_rate } %>
+  <%= render partial: 'form_errors', locals: { model: exchange_rate } %>
 
   <div class="form-group mb-4">
     <%= f.datetime_select :rate_at,
-        ampm: true,
-        value: exchange_rate.rate_at_localtime,
-				locale: :ru,
-				class: 'form-control mb-2' %>
+                          ampm: true,
+                          value: exchange_rate.rate_at_localtime,
+                          locale: :ru,
+                          class: 'form-control mb-2' %>
   </div>
 
   <div class="col-lg-4">
     <div class="form-group mb-2">
       <%= f.label :rate_value, 'Курс доллара:', class: 'form-label' %>
       <%= f.text_field :rate_value,
-        value: exchange_rate.human_money,
-				class: 'form-control mb-8' %>
+                       value: exchange_rate.human_money,
+                       class: 'form-control mb-8' %>
     </div>
   </div>
 
