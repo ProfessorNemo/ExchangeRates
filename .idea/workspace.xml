@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bfdb036-e9a5-4865-9c21-e3b58906ae7c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ExchangeRates.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ExchangeRates.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a4e462cd-ef67-4e8b-87f9-cc23602a074a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a4e462cd-ef67-4e8b-87f9-cc23602a074a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/exchange_rates/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/exchange_rates/_form.html.erb" afterDir="false" />
-    </list>
+    <list default="true" id="2bfdb036-e9a5-4865-9c21-e3b58906ae7c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +30,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/professor/Документы/rubytut/Ilya_Krukowski/Hotwire/HotwireSeries",
+    "last_opened_file_path": "/home/professor/Документы/rubytut/gits/AskAns",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -169,7 +161,7 @@
       <option name="presentableId" value="Default" />
       <updated>1677190470712</updated>
       <workItem from="1677190495346" duration="5165000" />
-      <workItem from="1677264265891" duration="3396000" />
+      <workItem from="1677264265891" duration="3563000" />
     </task>
     <servers />
   </component>

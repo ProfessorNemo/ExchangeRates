@@ -6,7 +6,7 @@ RSpec.describe 'User page admin page' do
   it 'User looks admin page' do
     visit '/user'
 
-    # пользовательская страничка
+    # ПОЛЬЗОВАТЕЛЬСКАЯ СТРАНИЧКА
     # save_and_open_page
 
     click_link 'Курс доллара'
